@@ -1,3 +1,8 @@
+using EmployeeManagementSystem.DataAccess.Implemetations;
+using EmployeeManagementSystem.DataAccess.Interfaces;
+using EmployeeManagementSystem.Services.Implementations;
+using EmployeeManagementSystem.Services.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +12,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<IDbContext, DbContext>();
+builder.Services.AddScoped<IEmployeeServices, EmployeeServices>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
